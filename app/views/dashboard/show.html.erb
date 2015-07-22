@@ -1,16 +1,29 @@
 <div class="container-fluid container-home">
   <div class="row">
+    <div class="col-md-1"></div>
     <div class="col-md-3">
       <h2 class="home">Your Information:</h2>
       <h3 class="home">Followers: <%= @client.user.followers %></h3>
       <h3 class="home">Following: <%= @client.user.following %></h3>
+      <h3 class="home">Starred Repos: <%= @client.starred.count %></h3>
+      <% @client.organizations.each do |org| %>
+        <div><%= org.login %></div>
+      <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h1 class="text-center home"><%= current_user.name %></h1>
       <img src=<%= current_user.image %> alt="profile pic" class="img-circle center-block" style="height: 200px;">
+      
     </div>
     <div class="col-md-3">
+      <% @events.each do |event| %>
+        <div class="event">
+          <h4><%= event.type[0..-6] %></h4>
+          <h5><%= event.repo.name %></h5>
+        </div>
+      <% end %>
     </div>
+    <div class="col-md-1"></div>
   </div>
 
   <div class="row">

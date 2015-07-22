@@ -6,8 +6,9 @@
       <h3 class="home">Followers: <%= @client.user.followers %></h3>
       <h3 class="home">Following: <%= @client.user.following %></h3>
       <h3 class="home">Starred Repos: <%= @client.starred.count %></h3>
+      <h3 class="home">Your Organizations:</h3>
       <% @client.organizations.each do |org| %>
-        <div><%= org.login %></div>
+        <div><h4 class="home"><%= org.login %></h4></div>
       <% end %>
     </div>
     <div class="col-md-4">

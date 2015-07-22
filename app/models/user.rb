@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
     user.save
     user
   end
+
+  def github_client
+    @client = Octokit::Client.new(access_token: token)
+  end
+
+#  def last_year_commits
+#   github_client.commits_between
+#  end
 end

@@ -1,7 +1,10 @@
 <div class="container-fluid container-home">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-3">
+
+    <div class="col-md-4">
+      <h1 class="text-center home"><%= current_user.name %></h1>
+      <img src=<%= current_user.image %> alt="profile pic" class="img-circle center-block" style="height: 200px;">
       <h2 class="home">Your Information:</h2>
       <h3 class="home">Followers: <%= @client.user.followers %></h3>
       <h3 class="home">Following: <%= @client.user.following %></h3>
@@ -11,16 +14,21 @@
         <div><a href="http://github.com/<%= org.login %>"><h4 class="home"><img src=<%= org.avatar_url %> class="img-circle" style="height: 30px; verticle-align: middle">  <%= org.login %></h4></a></div>
       <% end %>
     </div>
-    <div class="col-md-4">
-      <h1 class="text-center home"><%= current_user.name %></h1>
-      <img src=<%= current_user.image %> alt="profile pic" class="img-circle center-block" style="height: 200px;">
-      
-    </div>
+
     <div class="col-md-3">
-      <% @events.each do |event| %>
+      <h2 class="home">Your Activity:</h2>
+      <% @events.first(7).each do |event| %>
         <div class="event">
           <h4><img src=<%= event.actor.avatar_url %> alt="actor thumbnail" class="img-circle" style="height: 40px; verticle-align: bottom">  <%= event.type[0..-6] %> | <%= event.created_at.strftime("%d.%m.%Y") %></h4>
           <h5><%= link_to event.repo.name, "http://github.com/#{event.repo.name}" %></h5>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <h2 class="home">Your Repos:</h2>
+      <% @client.repositories.reverse.first(13).each do |repo| %>
+        <div class="repo">
+          <h3 class="home"><%= link_to repo.name, repo.html_url %></h4>
         </div>
       <% end %>
     </div>

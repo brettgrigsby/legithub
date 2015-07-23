@@ -17,4 +17,11 @@ class User < ActiveRecord::Base
 #  def last_year_commits
 #   github_client.commits_between
 #  end
+
+  def following_feed
+    events = github_client.following.map do |user|
+      github_client.user_events(user.login)
+    end.flatten
+    events.sort_by { |event| event.created_at }.reverse
+  end
 end

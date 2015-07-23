@@ -18,7 +18,8 @@
   background-color: white;
   height: 75px;
   opacity: 0.8;
-  text-align: left;
+  outline-style: solid;
+  outline-color: black;
 }
 
 .event:hover {

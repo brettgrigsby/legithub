@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
     @client = Octokit::Client.new(access_token: token)
   end
 
-#  def last_year_commits
-#   github_client.commits_between
-#  end
+  def repositories
+    github_client.repositories
+  end
 
   def following_feed
     events = github_client.following.map do |user|

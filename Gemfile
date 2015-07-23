@@ -15,10 +15,13 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'github_api'
 gem 'octokit'
-
+gem 'hashie'
 
 group :development, :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'byebug'
+  gem 'mocha'
 
   gem 'web-console', '~> 2.0'
 

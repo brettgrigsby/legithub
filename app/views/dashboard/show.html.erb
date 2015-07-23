@@ -20,7 +20,7 @@
       <% @events.first(7).each do |event| %>
         <div class="event">
           <h4>  <img src=<%= event.actor.avatar_url %> alt="actor thumbnail" class="img-circle" style="height: 40px; verticle-align: bottom">  <%= event.type[0..-6] %> | <%= event.created_at.strftime("%d.%m.%Y") %></h4>
-          <h5>  <%= link_to event.repo.name, "http://github.com/#{event.repo.name}" %></h5>
+          <h5>  <%= link_to event.repo.name, "http://github.com/#{event.repo.name}/commits/#{event.payload.commits.first.sha}" %></h5>
         </div>
       <% end %>
     </div>

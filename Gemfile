@@ -18,13 +18,17 @@ gem 'octokit'
 gem 'hashie'
 
 group :development, :test do
-  gem 'vcr'
-  gem 'webmock'
   gem 'byebug'
-  gem 'mocha'
 
   gem 'web-console', '~> 2.0'
 
   gem 'spring'
 end
 
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+  gem 'mocha'
+  gem 'capybara'
+  gem 'launchy'
+end
